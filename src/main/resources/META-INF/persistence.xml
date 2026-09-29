@@ -1,41 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <persistence version="3.0"
              xmlns="https://jakarta.ee/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
              https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 
-    <persistence-unit name="emailListPU"
-                      transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="emailListPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
-        <provider>
-            org.eclipse.persistence.jpa.PersistenceProvider
-        </provider>
-
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <class>murach.business.User</class>
 
         <properties>
+            <!-- Driver kết nối PostgreSQL -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
-            <!-- PostgreSQL connection -->
-            <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:postgresql://localhost:5432/murach_jpa"/>
+            <!-- URL đã được thêm đầy đủ tiền tố jdbc:postgresql:// và host của Render -->
+            <property name="jakarta.persistence.jdbc.url" value="postgresql://ch14email_user:xtevin6CiWnFADydhSDbmy1OHsnH5EHI@dpg-datt37rncjis739uc4vg-a.oregon-postgres.render.com/ch14email"/>
+            <property name="jakarta.persistence.jdbc.user" value="ch14email_user"/>
+            <!-- Thay chuỗi bên dưới bằng Password thật copy từ mục Connections của email-list-db trên Render -->
+            <property name="jakarta.persistence.jdbc.password" value="xtevin6CiWnFADydhSDbmy1OHsnH5EHI"/>
 
-            <property name="jakarta.persistence.jdbc.driver"
-                      value="org.postgresql.Driver"/>
-
-            <property name="jakarta.persistence.jdbc.user"
-                      value="postgres"/>
-
-            <property name="jakarta.persistence.jdbc.password"
-                      value="1234"/>
-
-            <!-- Create tables automatically -->
-            <property name="jakarta.persistence.schema-generation.database.action"
-                      value="create"/>
-
+            <!-- Cấu hình EclipseLink tự động tạo/cập nhật bảng -->
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
         </properties>
-
     </persistence-unit>
-
 </persistence>
