@@ -65,8 +65,8 @@ public class MailUtilGmail {
                 session.getTransport();
 
         transport.connect(
-                "tranthienan6298.2017@gmail.com",
-                "bufe muqu gnus ziue"
+                "thienantranit@gmail.com",
+                "bwie szbw phaa crer"
         );
 
         transport.sendMessage(
