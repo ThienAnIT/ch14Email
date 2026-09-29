@@ -8,9 +8,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
 import murach.business.User;
 import murach.data.UserDB;
 import murach.email.MailUtilGmail;
+import murach.email.MailUtilRender;
 
 import java.io.IOException;
 
@@ -96,25 +98,22 @@ public class EmailListServlet extends HttpServlet {
                     // Email information
                     String to = email;
 
-                    String from =
-                            "YOUR_GMAIL@gmail.com";
+                    String from = "thienantranIT@gmail.com";
 
-                    String subject =
-                            "Welcome to our email list";
+                    String subject = "Welcome to our email list";
 
-                    String body =
-                            "Dear " + firstName + ",\n\n"
-                                    + "Thank you for joining our email list.\n\n"
-                                    + "We will send you announcements "
-                                    + "about new products and promotions.\n\n"
-                                    + "Have a great day!\n\n"
-                                    + "Thank you.";
+                    String body = "Dear " + firstName + ",\n\n"
+                            + "Thank you for joining our email list.\n\n"
+                            + "We will send you announcements "
+                            + "about new products and promotions.\n\n"
+                            + "Have a great day!\n\n"
+                            + "Thank you.";
 
                     boolean isBodyHTML = false;
 
                     try {
-
-                        MailUtilGmail.sendMail(
+                        // Gọi MailUtilRender thay vì MailUtilGmail
+                        MailUtilRender.sendMail(
                                 to,
                                 from,
                                 subject,
@@ -123,20 +122,9 @@ public class EmailListServlet extends HttpServlet {
                         );
 
                     } catch (MessagingException e) {
-
-                        String errorMessage =
-                                "Unable to send email. "
-                                        + "Please check your mail configuration.";
-
-                        request.setAttribute(
-                                "errorMessage",
-                                errorMessage
-                        );
-
-                        log(
-                                "Unable to send email.",
-                                e
-                        );
+                        String errorMessage = "Unable to send email. Please check your mail configuration.";
+                        request.setAttribute("errorMessage", errorMessage);
+                        log("Unable to send email.", e);
                     }
 
                     url = "/thanks.jsp";
