@@ -15,7 +15,7 @@
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
             <!-- URL đã được thêm đầy đủ tiền tố jdbc:postgresql:// và host của Render -->
-            <property name="jakarta.persistence.jdbc.url" value="postgresql://ch14email_user:xtevin6CiWnFADydhSDbmy1OHsnH5EHI@dpg-datt37rncjis739uc4vg-a.oregon-postgres.render.com/ch14email"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://dpg-datt37rncjis739uc4vg-a.oregon-postgres.render.com/ch14email"/>
             <property name="jakarta.persistence.jdbc.user" value="ch14email_user"/>
             <!-- Thay chuỗi bên dưới bằng Password thật copy từ mục Connections của email-list-db trên Render -->
             <property name="jakarta.persistence.jdbc.password" value="xtevin6CiWnFADydhSDbmy1OHsnH5EHI"/>
